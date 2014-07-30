@@ -16,15 +16,16 @@ class Game.States.Run
         @game.physics.startSystem(Phaser.Physics.P2JS)
         @game.physics.p2.defaultRestitution = 0.2
         
-        # 
+        # Add a basic sprite to the game/
         @game.sprite = @game.add.sprite(0, 0, 'circle')
 
+        # Enable physics for the sprite.
         @game.physics.p2.enable(@game.sprite)
-
-        @game.cursors = @game.input.keyboard.createCursorKeys()
         
+        # Set the keyboard.
         @game.keyboard = new Game.Classes.Keyboard(@game)
 
     update: () ->
         
+        # Send the update signal to all subcribers/\.
         @onUpdate.dispatch()

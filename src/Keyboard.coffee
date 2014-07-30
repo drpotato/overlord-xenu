@@ -8,11 +8,11 @@ class Game.Classes.Keyboard
         Game.Global.onUpdate.add(@update, @)
         
     update: () ->
-        if @game.cursors.left.isDown
+        if @cursors.left.isDown
             @game.sprite.body.moveLeft(400)
-        if @game.cursors.right.isDown
+        if @cursors.right.isDown
             @game.sprite.body.moveRight(400)
-        if @game.cursors.up.isDown
+        if @cursors.up.isDown
             @game.sprite.body.moveUp(400)
-        if @game.cursors.down.isDown
+        if @cursors.down.isDown
             @game.sprite.body.moveDown(400)
