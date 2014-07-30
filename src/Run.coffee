@@ -5,6 +5,11 @@ class Game.States.Run
 
     # Load in all the files required for the game.
     preload: () ->
+        # Set up cross Class communication as we cannot access parent classes in js
+        Game.Global = @
+        
+        # Setup global update signal.
+        @onUpdate = new Phaser.Signal()
 
     create: () ->
         # Start the game's physics.
@@ -17,14 +22,9 @@ class Game.States.Run
         @game.physics.p2.enable(@game.sprite)
 
         @game.cursors = @game.input.keyboard.createCursorKeys()
+        
+        @game.keyboard = new Game.Classes.Keyboard(@game)
 
     update: () ->
-        if @game.cursors.left.isDown
-            @game.sprite.body.moveLeft(400)
-        if @game.cursors.right.isDown
-            @game.sprite.body.moveRight(400)
-        if @game.cursors.up.isDown
-            @game.sprite.body.moveUp(400)
-        if @game.cursors.down.isDown
-            @game.sprite.body.moveDown(400)
-
+        
+        @onUpdate.dispatch()
