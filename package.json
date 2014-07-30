@@ -1,0 +1,17 @@
+{
+    "name": "distance",
+    "version": "0.1.0",
+    "author": {
+        "name": "Chris Morgan",
+        "email": "chris.j.r.morgan@gmail.com",
+        "url": "github.com/drpotato"
+    },
+    "devDependencies": {
+        "grunt": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-coffee": "latest",
+        "connect": "latest",
+        "serve-static": "latest"
+    }
+}
