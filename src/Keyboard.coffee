@@ -7,12 +7,15 @@ class Game.Classes.Keyboard
         
         Game.Global.onUpdate.add(@update, @)
         
+    setKeyBindings: (key_bindings) ->
+        @key_bindings = key_bindings
+        
     update: () ->
         if @cursors.left.isDown
-            @game.sprite.body.moveLeft(400)
+            @key_bindings.left
         if @cursors.right.isDown
-            @game.sprite.body.moveRight(400)
+            @key_bindings.right
         if @cursors.up.isDown
-            @game.sprite.body.moveUp(400)
+            @key_bindings.up
         if @cursors.down.isDown
-            @game.sprite.body.moveDown(400)
+            @key_bindings.down
