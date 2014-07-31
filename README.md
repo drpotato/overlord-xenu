@@ -57,6 +57,15 @@ This will run a server so you can run the game in a browser.
 
 Open your browser and enter `localhost:12345` into the address bar.
 
+## Grunt
+
+To constantly compile the CoffeeScript, run:
+
+`grunt watch`
+
+This will watch the files in the src folder, if they change it will recompile
+them and output any errors that occur.
+
 ## Resources
 
 Here are some documentation links to help you with development and debugging:
@@ -64,6 +73,7 @@ Here are some documentation links to help you with development and debugging:
 * [Phaser Documentation](http://phaser.io/docs/)
 * [Phaser Examples](http://phaser.io/examples/)
 * [CoffeeScript syntax & documentation](http://coffeescript.org)
-* [Google](http://google.com) <- The most important one!
+* [Grunt Documentation](http://gruntjs.com)
+* [Google](http://google.com) <= The most important one!
 
 Have fun!
