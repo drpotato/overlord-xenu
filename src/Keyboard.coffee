@@ -1,21 +1,27 @@
 
 class Game.Classes.Keyboard
-    
+
     constructor: (@game) ->
-        
-        @cursors = @game.input.keyboard.createCursorKeys()
-        
-        Game.Global.onUpdate.add(@update, @)
-        
-    setKeyBindings: (key_bindings) ->
-        @key_bindings = key_bindings
-        
-    update: () ->
-        if @cursors.left.isDown
-            @key_bindings.left('left')
-        if @cursors.right.isDown
-            @key_bindings.right('right')
-        if @cursors.up.isDown
-            @key_bindings.up('up')
-        if @cursors.down.isDown
-            @key_bindings.down('down')
+
+        @keys = @game.input.keyboard.createCursorKeys()
+
+        @key_bindings = {}
+
+    setKeyBindings: (key_bindings) =>
+        @key_bindings = Game.Functions.recursive_merge(@key_bindings, key_bindings)
+        @update_key_bindings()
+
+    reset_key_bindings: () =>
+        @key_bindings = {}
+        @update_key_bindings()
+
+    update_key_bindings: () =>
+
+        for key of @keys
+            if @keys[key]? and @key_bindings[key]?
+                for event in ['onDown', 'onUp']
+                    if @key_bindings[key][event]?
+                        @keys[key][event].removeAll()
+                        @keys[key][event].add(@key_bindings[key][event])
+                if @key_bindings[key]['onHold']?
+                    @keys[key].onHoldCallback = @key_bindings[key]['onHold']
