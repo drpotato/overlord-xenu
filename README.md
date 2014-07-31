@@ -2,7 +2,7 @@ Phaser Bootstrap
 ================
 
 This is a basic bootstrap to start developing games using the HTML5 game
-framework,[Phaser](https://github.com/photonstorm/phaser).
+framework, [Phaser](https://github.com/photonstorm/phaser).
 
 Originally made for the SESA Game Jam 2014 by [Chris Morgan](https://github.com/drpotato).
 
@@ -16,7 +16,8 @@ working copy of the game.
 Navigate into your workspace directory.
 
 Run:
-    git clone git@github.com:ausesa/phaser-bootstrap.git
+
+`git clone git@github.com:ausesa/phaser-bootstrap.git`
 
 Windows users will need to install git. Despite my hatred for graphical clients,
 I recommend the [Github client](https://windows.github.com).
@@ -34,20 +35,23 @@ Windows users, open up the node.js terminal client to do this. Also, you might n
 Navigate to the cloned repo’s directory.
 
 Run:
-    sudo npm install -g grunt-cli
-    npm install
+
+`sudo npm install -g grunt-cli`
+`npm install`
 
 ### 4. Complile the CoffeeScript:
 
 Run:
-    grunt coffeescript
+
+`grunt coffeescript`
 
 This will compile all the `.Coffee` files in the src directory into `build/game.js`.
 
 ### 5. Run the server:
 
 Run:
-    nodejs server.js
+
+`nodejs server.js`
 
 This will run a server so you can run the game in a browser.
 
