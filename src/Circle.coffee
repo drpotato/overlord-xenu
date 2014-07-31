@@ -30,10 +30,16 @@ class Game.Classes.Circle
                 'onHold': @handle_keypress,
                 'onUp' : @do_nothing,
                 'onDown': @do_nothing,
+            },
+            'a': {
+                'onHold': @do_nothing
+            },
+            'space': {
+                'onDown': @handle_keypress
             }
         }
         # Load key bindings into the keyboard controller.
-        @game.keyboard.setKeyBindings(@key_bindings)
+        @game.keyboard.set_key_bindings(@key_bindings)
 
     handle_keypress: (key) =>
         # When we handle a keypress, a key object representing the key pressed
@@ -49,4 +55,3 @@ class Game.Classes.Circle
             when 'left' then @sprite.body.moveLeft(400)
 
     do_nothing: (key) =>
-        console.log 'Doing nothing.'

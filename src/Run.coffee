@@ -5,23 +5,31 @@ class Game.States.Run
 
     # Load in all the files required for the game.
     preload: () ->
-        # Set up cross Class communication as we cannot access parent classes in js
+        # Set up cross Class communication as we cannot access parent classes
+        # in javascript.
         Game.Global = @
-        
+
         # Setup global update signal.
+        # We use this to update all the entities in the game (maybe...)
         @onUpdate = new Phaser.Signal()
-        
+
         # Set the keyboard.
         @game.keyboard = new Game.Classes.Keyboard(@game)
+
+        # Create a sound manager and add music.
+        @sound_manager = new Phaser.SoundManager(@game)
+        # I haven't enabled this because there currently exists no music.
+        # It's added in a similar way to images.
+        # @sound_manager.music = @soundmanager.add('music', 1, true)
 
     create: () ->
         # Start the game's physics.
         @game.physics.startSystem(Phaser.Physics.P2JS)
         @game.physics.p2.defaultRestitution = 0.2
-        
+
+        # Create our first object in the world.
         @game.circle = new Game.Classes.Circle(@game)
 
     update: () ->
-        
-        # Send the update signal to all subcribers.
+        # Send the update signal to all subscribers.
         @onUpdate.dispatch()

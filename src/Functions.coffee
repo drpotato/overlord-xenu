@@ -1,9 +1,10 @@
 # Utility functions for use in the game.
 
 class Game.Functions
-
+    # Merges two objects together, adding properties of object_2 to object_1
+    # and overriding them if the property already exists. This is done
+    # recursively so this is a deep merge.
     @recursive_merge: (object_1, object_2) ->
-
         for property of object_2
             try
 

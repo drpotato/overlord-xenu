@@ -1,3 +1,20 @@
+# Keyboard interface for the game.
+#
+# To bind keys, pass an object to set_key_bindings of the format:
+# {
+#   key : {
+#       event: callback_function,
+#       ...
+#       },
+#   ...
+#   }
+# }
+#
+# Key can be one of: 'a', 'b', 'c', ..., 'z', '1', ..., '0', 'up', 'down', 'left', 'right', 'space'.
+# Event can be one of:  'onHold', 'onDown', 'onUp'.
+# The event callback is called when they event for that key is sent.
+#
+# See Game.Classes.Circle for an example of binding keys.
 
 class Game.Classes.Keyboard
 
@@ -5,9 +22,16 @@ class Game.Classes.Keyboard
 
         @keys = @game.input.keyboard.createCursorKeys()
 
+        # Awesome way to binding most of the keys on the keyboard.
+        for key in "abcdefghijklmnopqrstuvwxyz1234567890".split("")
+            @keys[key] = @game.input.keyboard.addKey(Phaser.Keyboard[key.toUpperCase()])
+
+        # Some of the other keys aren't so easy.
+        @keys.space = @game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
+
         @key_bindings = {}
 
-    setKeyBindings: (key_bindings) =>
+    set_key_bindings: (key_bindings) =>
         @key_bindings = Game.Functions.recursive_merge(@key_bindings, key_bindings)
         @update_key_bindings()
 

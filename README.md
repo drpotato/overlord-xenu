@@ -74,7 +74,7 @@ Here are some documentation links to help you with development and debugging:
 * [Phaser Documentation](http://phaser.io/docs/)
 * [Phaser Examples](http://phaser.io/examples/)
 * [CoffeeScript syntax & documentation](http://coffeescript.org)
-* [Awesome “Book” on CoffeeScript](arcturo.github.io/library/coffeescript)
+* [Awesome “Book” on CoffeeScript](http://arcturo.github.io/library/coffeescript)
 * [Grunt Documentation](http://gruntjs.com)
 * [Google](https://google.com) <= The most important one!
 * [Pigvane](https://github.com/drpotato/pigvane), a game I made (along with
