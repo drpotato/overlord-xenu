@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "description": "Bootstrap for fast game development using the Phaser framework.",
     "repository": "github.com/ausesa/phaser-bootstrap",
+    "readme": "README.md",
     "author": {
         "name": "Chris Morgan",
         "email": "chris.j.r.morgan@gmail.com",
