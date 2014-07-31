@@ -37,13 +37,14 @@ Navigate to the cloned repo’s directory.
 Run:
 
 `sudo npm install -g grunt-cli`
+
 `npm install`
 
 ### 4. Complile the CoffeeScript:
 
 Run:
 
-`grunt coffeescript`
+`grunt coffee`
 
 This will compile all the `.Coffee` files in the src directory into `build/game.js`.
 
@@ -51,7 +52,7 @@ This will compile all the `.Coffee` files in the src directory into `build/game.
 
 Run:
 
-`nodejs server.js`
+`node server.js`
 
 This will run a server so you can run the game in a browser.
 
