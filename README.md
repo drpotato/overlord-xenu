@@ -74,6 +74,8 @@ Here are some documentation links to help you with development and debugging:
 * [Phaser Examples](http://phaser.io/examples/)
 * [CoffeeScript syntax & documentation](http://coffeescript.org)
 * [Grunt Documentation](http://gruntjs.com)
-* [Google](http://google.com) <= The most important one!
+* [Google](https://google.com) <= The most important one!
+* [Pigvane](https://github.com/drpotato/pigvane), a game I made (along with
+[Fred](https://github.com/fredrickgogerty) and [Oscar](https://github.com/xxnxT)) for Global Game Jam 2014.
 
 Have fun!
