@@ -12,10 +12,10 @@ class Game.Classes.Keyboard
         
     update: () ->
         if @cursors.left.isDown
-            @key_bindings.left
+            @key_bindings.left('left')
         if @cursors.right.isDown
-            @key_bindings.right
+            @key_bindings.right('right')
         if @cursors.up.isDown
-            @key_bindings.up
+            @key_bindings.up('up')
         if @cursors.down.isDown
-            @key_bindings.down
+            @key_bindings.down('down')

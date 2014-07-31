@@ -10,20 +10,17 @@ class Game.Classes.Circle
         @game.physics.p2.enable(@sprite)
         
         @key_bindings = {
-            'up': @move(0),
-            'right': @move(1),
-            'down': @move(2),
-            'left': @move(3)
+            'up': @handle_keypress,
+            'right': @handle_keypress,
+            'down': @handle_keypress,
+            'left': @handle_keypress
         }
 
         @game.keyboard.setKeyBindings(@key_bindings)
 
-    move: (direction) ->
-        
-        console.log(direction)
-        
-        switch direction
-            when 0 then @sprite.body.moveUp(400)
-            when 1 then @sprite.body.moveRight(400)
-            when 2 then @sprite.body.moveDown(400)
-            when 3 then @sprite.body.moveLeft(400)
+    handle_keypress: (key) =>
+        switch key
+            when 'up' then @sprite.body.moveUp(400)
+            when 'right' then @sprite.body.moveRight(400)
+            when 'down' then @sprite.body.moveDown(400)
+            when 'left' then @sprite.body.moveLeft(400)
