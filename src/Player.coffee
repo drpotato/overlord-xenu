@@ -1,16 +1,12 @@
-# This is an example class of how to set up a Entity.
-class Game.Classes.Circle
+# This is an basic player class.
+class Game.Classes.Player extends Game.Classes.Entity
 
-    constructor: (@game) ->
+    constructor: (@game, x, y, update) ->
 
-        # Add a basic sprite to the game.
-        @sprite = @game.add.sprite(0, 0, 'circle')
-
-        # Enable physics for the sprite.
-        @game.physics.p2.enable(@sprite)
-
+        super(@game, x, y, 'circle', update)
+        
         # Set up the key bindings for the entity.
-        @key_bindings = {
+        @add_key_bindings({
             'up': {
                 'onHold': @handle_keypress,
                 'onUp' : @do_nothing,
@@ -37,9 +33,8 @@ class Game.Classes.Circle
             'space': {
                 'onDown': @handle_keypress
             }
-        }
-        # Load key bindings into the keyboard controller.
-        @game.keyboard.set_key_bindings(@key_bindings)
+        })
+
 
     handle_keypress: (key) =>
         # When we handle a keypress, a key object representing the key pressed
@@ -49,9 +44,9 @@ class Game.Classes.Circle
         key_name = key.event.keyIdentifier.toLowerCase()
 
         switch key_name
-            when 'up' then @sprite.body.moveUp(400)
-            when 'right' then @sprite.body.moveRight(400)
-            when 'down' then @sprite.body.moveDown(400)
-            when 'left' then @sprite.body.moveLeft(400)
+            when 'up' then @body.moveUp(500)
+            when 'right' then @body.moveRight(500)
+            when 'down' then @body.moveDown(500)
+            when 'left' then @body.moveLeft(500)
 
     do_nothing: (key) =>
