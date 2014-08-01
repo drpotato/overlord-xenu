@@ -1,17 +1,13 @@
-# This is an basic player class.
-class Game.Classes.Entity extends Phaser.Sprite
+# This is an basic entity class.
+class Game.Classes.Entity
 
     constructor: (@game, x, y, name, updates) ->
 
-        # Create sprite object
-        super(@game, x, y, name)
+        # Create sprite object and add it to the world.
+        @sprite = @game.add.sprite(x, y, name)
         
         # Enable physics for the sprite if wanted.
-        @game.physics.p2.enable(@)
-        @body.collideWorldBounds = true
-        
-        # Add itself to the world.
-        @game.add.existing(@)
+        @game.physics.p2.enable(@sprite)
 
         # Subscribe to updates.
         if updates?

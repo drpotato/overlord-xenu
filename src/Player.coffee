@@ -44,9 +44,10 @@ class Game.Classes.Player extends Game.Classes.Entity
         key_name = key.event.keyIdentifier.toLowerCase()
 
         switch key_name
-            when 'up' then @body.moveUp(500)
-            when 'right' then @body.moveRight(500)
-            when 'down' then @body.moveDown(500)
-            when 'left' then @body.moveLeft(500)
+            when 'up' then @sprite.body.moveUp(500)
+            when 'right' then @sprite.body.moveRight(500)
+            when 'down' then @sprite.body.moveDown(500)
+            when 'left' then @sprite.body.moveLeft(500)
 
     do_nothing: (key) =>
+        
