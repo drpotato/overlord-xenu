@@ -20,3 +20,6 @@ class Game.Functions
                 object_1[property] = object_2[property]
 
         return object_1
+
+    @random_int_between: (min, max) ->
+        return Math.floor(Math.random() * (max - min) + min)

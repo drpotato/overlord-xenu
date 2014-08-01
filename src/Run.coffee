@@ -30,6 +30,7 @@ class Game.States.Run
         # Create our first object in the world.
         @game.t_wrecks = new Game.Classes.TWrecks(@game, 200, 200, @onUpdate)
         @game.circle = new Game.Classes.Entity(@game, 100, 100, 'circle')
+        @game.xenu = new Game.Classes.Xenu(@game, 300, 300, @onUpdate)
 
     update: () ->
         # Send the update signal to all subscribers.
