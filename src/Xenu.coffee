@@ -7,6 +7,7 @@ class Game.Classes.Xenu extends Game.Classes.Entity
         @sprite.scale.divide(4,4) # 1/4 the size
         @sprite.body.setRectangleFromSprite()
         @start_move()
+        #test
 
     update: () =>
 	
