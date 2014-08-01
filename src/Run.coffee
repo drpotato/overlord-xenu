@@ -28,7 +28,7 @@ class Game.States.Run
         @game.physics.p2.defaultRestitution = 0.2
 
         # Create our first object in the world.
-        @game.player = new Game.Classes.Player(@game, 200, 200, @onUpdate)
+        @game.t_wrecks = new Game.Classes.TWrecks(@game, 200, 200, @onUpdate)
         @game.circle = new Game.Classes.Entity(@game, 100, 100, 'circle')
 
     update: () ->

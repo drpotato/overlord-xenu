@@ -8,7 +8,7 @@ renderer = Phaser.CANVAS
 parent = 'game-div'
 state = null # We assign states later
 transparent = false
-antialias = true
+antialias = false
 physics_config = null
 
 # Initialise the gamme

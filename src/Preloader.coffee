@@ -8,6 +8,7 @@ class Game.States.Preloader
         @game.stage.backgroundColor = '#FFF'
         # Use this to load in images.
         # @game.load.image('<IMAGE_NAME>', '<IMAGE_FILE>')
+        @game.load.image('t_wrecks', 'res/t_wrecks.png')
         @game.load.image('circle', 'res/circle.png')
 
     create: () ->

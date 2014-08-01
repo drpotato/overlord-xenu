@@ -1,42 +1,31 @@
 # This is an basic player class.
-class Game.Classes.Player extends Game.Classes.Entity
+class Game.Classes.TWrecks extends Game.Classes.Entity
 
     constructor: (@game, x, y, update) ->
 
-        super(@game, x, y, 'circle', update)
+        super(@game, x, y, 't_wrecks', update)
         
         # Set up the key bindings for the entity.
         @add_key_bindings({
             'up': {
-                'onHold': @handle_keypress,
-                'onUp' : @do_nothing,
-                'onDown': @do_nothing,
+                'onHold': @move
             },
             'right': {
-                'onHold': @handle_keypress,
-                'onUp' : @do_nothing,
-                'onDown': @do_nothing,
+                'onHold': @move
             },
             'down': {
-                'onHold': @handle_keypress,
-                'onUp' : @do_nothing,
-                'onDown': @do_nothing,
+                'onHold': @move
             },
             'left': {
-                'onHold': @handle_keypress,
-                'onUp' : @do_nothing,
-                'onDown': @do_nothing,
+                'onHold': @move
             },
             'a': {
-                'onHold': @do_nothing
-            },
-            'space': {
-                'onDown': @handle_keypress
+                'onDown': @attack
             }
         })
 
 
-    handle_keypress: (key) =>
+    move: (key) =>
         # When we handle a keypress, a key object representing the key pressed
         # is passed to this function.
 
@@ -49,5 +38,15 @@ class Game.Classes.Player extends Game.Classes.Entity
             when 'down' then @sprite.body.moveDown(500)
             when 'left' then @sprite.body.moveLeft(500)
 
-    do_nothing: (key) =>
+    attack: (key) =>
+        console.log 'Attacking!'
+        tween = @game.add.tween(@sprite).to({angle: 360}, 500, Phaser.Easing.Linear.None)
+        tween.start()
+        
+        
+    update: () =>
+        # Chuck some friction in'
+        @sprite.body.velocity.x /= 1.01
+        @sprite.body.velocity.y /= 1.01
+        
         
