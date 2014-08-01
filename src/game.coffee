@@ -7,8 +7,8 @@ height = window.innerHeight
 renderer = Phaser.CANVAS
 parent = 'game-div'
 state = null # We assign states later
-transparent = false
-antialias = false
+transparent = true
+antialias = true
 physics_config = null
 
 # Initialise the gamme

@@ -23,6 +23,9 @@ class Game.Classes.TWrecks extends Game.Classes.Entity
                 'onDown': @attack
             }
         })
+        
+        @sprite.body.damping = 0.9
+        @sprite.body.angularDamping = 0.99
 
 
     move: (key) =>
@@ -31,12 +34,11 @@ class Game.Classes.TWrecks extends Game.Classes.Entity
 
         # Grab the name of the key.
         key_name = key.event.keyIdentifier.toLowerCase()
-
         switch key_name
-            when 'up' then @sprite.body.moveUp(500)
-            when 'right' then @sprite.body.moveRight(500)
-            when 'down' then @sprite.body.moveDown(500)
-            when 'left' then @sprite.body.moveLeft(500)
+            when 'up' then @sprite.body.thrust(500)
+            when 'right' then @sprite.body.rotateRight(50)
+            when 'down' then @sprite.body.reverse(20)
+            when 'left' then @sprite.body.rotateLeft(50)
 
     attack: (key) =>
         tween = @game.add.tween(@sprite.body).to({angle: 360}, 500, Phaser.Easing.Linear.None)
@@ -44,8 +46,3 @@ class Game.Classes.TWrecks extends Game.Classes.Entity
         
         
     update: () =>
-        # Chuck some friction in'
-        @sprite.body.velocity.x /= 1.01
-        @sprite.body.velocity.y /= 1.01
-        
-        
