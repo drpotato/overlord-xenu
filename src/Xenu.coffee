@@ -4,15 +4,21 @@ class Game.Classes.Xenu extends Game.Classes.Entity
     constructor: (@game, x, y, update) ->
         super(@game, x, y, 'xenu', update)
         @sprite.scale.divide(4,4) # 1/4 the size
-        target_x = Game.Functions.random_int_between(0, Game.game.width)
-        target_y = Game.Functions.random_int_between(0, Game.game.height)
-	
+        
+        #@game.physics.p2.disable(@sprite)
+        #@tween = @game.add.tween(@sprite)
+        @start_move()
 
     update: () =>
 	
-        @game.add.tween(@sprite).to(x: 123, y: 234)
+        
 
-    do_nothing: (key) =>
-
+    start_move: () =>
+        target_x = Game.Functions.random_int_between(0, Game.game.width)
+        target_y = Game.Functions.random_int_between(0, Game.game.height)
+        #console.log("x: " + target_x + " y: " + target_y)
+        @tween = @game.add.tween(@sprite.body).to({x: target_x, y: target_y}, 1000)
+        @tween.onComplete.add(@start_move, this)
+        @tween.start()
 
         
