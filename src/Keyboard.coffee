@@ -37,7 +37,10 @@ class Game.Classes.Keyboard
 
     reset_key_bindings: () =>
         @key_bindings = {}
-        @update_key_bindings()
+        for key of @keys
+            for event in ['onDown', 'onUp']
+                @keys[key][event].removeAll()
+            @keys[key].onHoldCallback = null
 
     update_key_bindings: () =>
 
