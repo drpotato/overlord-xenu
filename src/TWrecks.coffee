@@ -41,7 +41,8 @@ class Game.Classes.TWrecks extends Game.Classes.Entity
             when 'left' then @sprite.body.rotateLeft(50)
 
     attack: (key) =>
-        tween = @game.add.tween(@sprite.body).to({angle: 360}, 500, Phaser.Easing.Linear.None)
+        new_angle = @sprite.body.angle + 360
+        tween = @game.add.tween(@sprite.body).to({angle: new_angle}, 500, Phaser.Easing.Linear.None)
         tween.start()
         
         
