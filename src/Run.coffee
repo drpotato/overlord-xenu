@@ -32,6 +32,21 @@ class Game.States.Run
         @game.circle = new Game.Classes.Entity(@game, 100, 100, 'circle')
         @game.xenu = new Game.Classes.Xenu(@game, 300, 300, @onUpdate)
 
+        # @game.boxes = @game.add.group()
+        # @game.test_box = new Game.Classes.Bo
+        # @game.boxes.add()
+
+        # @game.t_wrecks.sprite.body.collides(@game.boxes, @check_box_collision)
+
     update: () ->
         # Send the update signal to all subscribers.
         @onUpdate.dispatch()
+
+    check_box_collision: (body, object_1, object_2, equation) ->
+
+        if body?
+            console.log typeof(object_1)
+            for thing of object_1
+                console.log thing
+            error()
+            # console.log JSON.stringify(body, Game.Functions.json_stringify_replacer, 4)
