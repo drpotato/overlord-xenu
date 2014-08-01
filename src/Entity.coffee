@@ -5,13 +5,13 @@ class Game.Classes.Entity extends Phaser.Sprite
 
         # Create sprite object
         super(@game, x, y, name)
-
-        # Add itself to the world.
-        @game.add.existing @
-
+        
         # Enable physics for the sprite if wanted.
         @game.physics.p2.enable(@)
-        @body.collideWorldBounds
+        @body.collideWorldBounds = true
+        
+        # Add itself to the world.
+        @game.add.existing(@)
 
         # Subscribe to updates.
         if updates?
