@@ -26,6 +26,8 @@ class Game.States.Run
         # Start the game's physics.
         @game.physics.startSystem(Phaser.Physics.P2JS)
         @game.physics.p2.defaultRestitution = 0.2
+        
+        @game.physics.p2.setImpactEvents(true);
 
         # Create collision groups for objects
         @game.t_wrecks_collision_group = @game.physics.p2.createCollisionGroup()
@@ -38,25 +40,17 @@ class Game.States.Run
         # Create our objects in the world.
         @game.crater = new Game.Classes.Crater(@game)
         @game.t_wrecks = new Game.Classes.TWrecks(@game, 200, 200, @onUpdate)
-        #@game.circle = new Game.Classes.Entity(@game, 100, 100, 'circle')
         @game.xenu = new Game.Classes.Xenu(@game, 300, 300, @onUpdate)
         
-
-        # @game.boxes = @game.add.group()
-        # @game.test_box = new Game.Classes.Bo
-        # @game.boxes.add()
-
-        # @game.t_wrecks.sprite.body.collides(@game.boxes, @check_box_collision)
+        @game.t_wrecks.sprite.body.setCollisionGroup(@game.t_wrecks_collision_group)
+        @game.t_wrecks.sprite.body.collides(@game.boxes_collision_group, @check_box_collision)
+        
 
     update: () ->
         # Send the update signal to all subscribers.
         @onUpdate.dispatch()
 
-    check_box_collision: (body, object_1, object_2, equation) ->
-
-        if body?
-            console.log typeof(object_1)
-            for thing of object_1
-                console.log thing
-            error()
-            # console.log JSON.stringify(body, Game.Functions.json_stringify_replacer, 4)
+    check_box_collision: (object_1, object_2) =>
+        if @game.t_wrecks.attacking and object_2.sprite?
+            object_2.sprite.destroy()
+            object_2 = null
