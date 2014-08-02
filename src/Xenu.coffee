@@ -25,3 +25,5 @@ class Game.Classes.Xenu extends Game.Classes.Entity
 
     place_box: () =>
         new Game.Classes.Box(@game, @sprite.position.x, @sprite.position.y)
+        # keep xenu on top
+        @sprite.bringToTop()
