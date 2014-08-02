@@ -14,7 +14,6 @@ physics_config = null
 # Initialise the game
 Game.game = new Phaser.Game(width, height, renderer, parent, transparent, antialias, physics_config)
 
-
 # Add the states from the Game.States object
 # The last boolean value determines which will run on startup
 Game.game.state.add('Preloader', Game.States.Preloader, true) # This state will run first.

@@ -57,6 +57,7 @@ class Game.States.Run
         @game.score_display = @game.add.text(0, 0, @score_string, @style)
         
         @game.no_boxes = 0
+        @game.score = 0
         @game.max_boxes = 30
         @boxes_string = 'Boxes: ' + @game.no_boxes.toString() + '/' + @game.max_boxes.toString()
         @game.boxes_display = @game.add.text(0, 20, @boxes_string, @style)
@@ -79,7 +80,7 @@ class Game.States.Run
     check_box_collision: (object_1, object_2) =>
         if @game.t_wrecks.attacking and object_2.sprite?
             @score += 1
-            @game.score = score
+            @game.score = @score
             @game.no_boxes -= 1
             @update_score_string()
             @update_boxes_string()
