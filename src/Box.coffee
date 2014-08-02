@@ -7,5 +7,5 @@ class Game.Classes.Box
         # Enable physics for the sprite.
         @game.physics.p2.enable(@sprite)
         @sprite.body.setRectangleFromSprite()
-        
-        
+        @sprite.body.static = true
+
