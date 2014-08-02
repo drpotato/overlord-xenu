@@ -5,6 +5,11 @@ class Game.Classes.Xenu extends Game.Classes.Entity
         super(@game, x, y, 'xenu', update)
         @sprite.scale.divide(4,4) # 1/4 the size
         @sprite.body.setRectangleFromSprite()
+
+        # Add him to his collision group
+        @sprite.body.setCollisionGroup(@game.xenu_collision_group)
+        @sprite.body.collides([@game.t_wrecks_collision_group])
+
         @start_move()
 
     update: () =>

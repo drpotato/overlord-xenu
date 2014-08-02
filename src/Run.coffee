@@ -27,10 +27,18 @@ class Game.States.Run
         @game.physics.startSystem(Phaser.Physics.P2JS)
         @game.physics.p2.defaultRestitution = 0.2
 
+        # Create collision groups for objects
+        @game.t_wrecks_collision_group = @game.physics.p2.createCollisionGroup()
+        @game.xenu_collision_group = @game.physics.p2.createCollisionGroup()
+        @game.boxes_collision_group = @game.physics.p2.createCollisionGroup()
+        # Still want to collide with world bounds
+        @game.physics.p2.updateBoundsCollisionGroup()
+
         # Create our first object in the world.
         @game.t_wrecks = new Game.Classes.TWrecks(@game, 200, 200, @onUpdate)
-        @game.circle = new Game.Classes.Entity(@game, 100, 100, 'circle')
+        #@game.circle = new Game.Classes.Entity(@game, 100, 100, 'circle')
         @game.xenu = new Game.Classes.Xenu(@game, 300, 300, @onUpdate)
+        
 
     update: () ->
         # Send the update signal to all subscribers.
