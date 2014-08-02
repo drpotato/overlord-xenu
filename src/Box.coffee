@@ -1,8 +1,16 @@
 
 class Game.Classes.Box
-
+    
+    @boxes: null
+    
     constructor: (@game, x, y) ->
-        @sprite = @game.add.sprite(x, y, 'box')
+        
+        if not @boxes?
+                @boxes = @game.add.group()
+                @boxes.enableBody = true;
+                @boxes.physicsBodyType = Phaser.Physics.P2JS;
+        
+        @sprite = @boxes.create(x, y, 'box')
         @sprite.scale.divide(6,6)
         # Enable physics for the sprite.
         @game.physics.p2.enable(@sprite)
