@@ -17,8 +17,8 @@ class Game.Classes.Xenu extends Game.Classes.Entity
 
     start_move: () =>
         @place_box()
-        target_x = Game.Functions.random_int_between(0, Game.game.width)
-        target_y = Game.Functions.random_int_between(0, Game.game.height)
+        target_x = Game.Functions.random_int_between(0, @game.width)
+        target_y = Game.Functions.random_int_between(0, @game.height)
         @tween = @game.add.tween(@sprite.body).to({x: target_x, y: target_y}, 1000)
         @tween.onComplete.add(@start_move, this)
         @tween.start()

@@ -31,10 +31,12 @@ class Game.States.Run
         @game.t_wrecks_collision_group = @game.physics.p2.createCollisionGroup()
         @game.xenu_collision_group = @game.physics.p2.createCollisionGroup()
         @game.boxes_collision_group = @game.physics.p2.createCollisionGroup()
+        @game.crater_collision_group = @game.physics.p2.createCollisionGroup()
         # Still want to collide with world bounds
         @game.physics.p2.updateBoundsCollisionGroup()
 
-        # Create our first object in the world.
+        # Create our objects in the world.
+        @game.crater = new Game.Classes.Crater(@game)
         @game.t_wrecks = new Game.Classes.TWrecks(@game, 200, 200, @onUpdate)
         #@game.circle = new Game.Classes.Entity(@game, 100, 100, 'circle')
         @game.xenu = new Game.Classes.Xenu(@game, 300, 300, @onUpdate)

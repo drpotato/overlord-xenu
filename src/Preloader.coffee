@@ -12,9 +12,10 @@ class Game.States.Preloader
         @game.load.image('circle', 'res/circle.png')
         @game.load.image('xenu', 'res/xenu.png')
         @game.load.image('box', 'res/box.jpg')
+        @game.load.image('crater', 'res/crater.jpg')
 
     create: () ->
-    	# Continue on to the `Preloader` state
+        # Continue on to the `Preloader` state
         @game.state.start 'Run'
 
 
