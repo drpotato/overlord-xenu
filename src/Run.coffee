@@ -43,6 +43,7 @@ class Game.States.Run
         @game.xenu = new Game.Classes.Xenu(@game, 300, 300, @onUpdate)
         
         @game.t_wrecks.sprite.body.setCollisionGroup(@game.t_wrecks_collision_group)
+        @game.t_wrecks.sprite.body.collides([@game.xenu_collision_group, @game.crater_collision_group])
         @game.t_wrecks.sprite.body.collides(@game.boxes_collision_group, @check_box_collision)
         
 

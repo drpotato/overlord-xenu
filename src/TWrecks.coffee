@@ -7,11 +7,6 @@ class Game.Classes.TWrecks extends Game.Classes.Entity
 
         @name = 't_wrecks'
         
-        # Add him to his collision group
-        @sprite.body.setCollisionGroup(@game.t_wrecks_collision_group)
-        @sprite.body.collides([@game.xenu_collision_group, @game.boxes_collision_group, @game.crater_collision_group])
-        @sprite.debug = true
-        
         # Set up the key bindings for the entity.
         @add_key_bindings({
             'up': {
