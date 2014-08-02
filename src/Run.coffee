@@ -79,6 +79,7 @@ class Game.States.Run
     check_box_collision: (object_1, object_2) =>
         if @game.t_wrecks.attacking and object_2.sprite?
             @score += 1
+            @game.score = score
             @game.no_boxes -= 1
             @update_score_string()
             @update_boxes_string()
