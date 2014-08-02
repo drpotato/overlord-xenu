@@ -20,7 +20,8 @@ class Game.Classes.Xenu extends Game.Classes.Entity
         @place_box()
         target_x = Game.Functions.random_int_between(0, @game.width)
         target_y = Game.Functions.random_int_between(0, @game.height)
-        @tween = @game.add.tween(@sprite.body).to({x: target_x, y: target_y}, 1000)
+        time_to_next_box = Math.max(10, 2000 - @game.no_boxes * 50)
+        @tween = @game.add.tween(@sprite.body).to({x: target_x, y: target_y}, time_to_next_box)
         @tween.onComplete.add(@start_move, this)
         @tween.start()
 
