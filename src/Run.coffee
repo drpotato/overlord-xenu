@@ -1,6 +1,7 @@
 # Main state for game, might split up into levels later.
 class Game.States.Run
     # `@game` automatically creates `this.game = game`
+    
     constructor: (@game) ->
 
     # Load in all the files required for the game.
@@ -46,6 +47,24 @@ class Game.States.Run
         @game.t_wrecks.sprite.body.collides([@game.xenu_collision_group, @game.crater_collision_group])
         @game.t_wrecks.sprite.body.collides(@game.boxes_collision_group, @check_box_collision)
         
+        # Text/Interface
+        @style = { font: "20px Arial", fill: "#ff0044", align: "left" };
+        @score = 0
+        @score_string = 'Score: 0'
+        @game.score_display = @game.add.text(0, 0, @score_string, @style)
+        
+        @game.no_boxes = 0
+        @game.max_boxes = 30
+        @boxes_string = 'Boxes: ' + @game.no_boxes.toString() + '/' + @game.max_boxes.toString()
+        @game.boxes_display = @game.add.text(0, 20, @boxes_string, @style)
+    
+    update_score_string: () =>
+        @score_string = 'Score: ' + @score.toString()
+        @game.score_display.text = @score_string
+        
+    update_boxes_string: () =>
+        @boxes_string = 'Boxes: ' + @game.no_boxes.toString() + '/' + @game.max_boxes.toString()
+        @game.boxes_display.text = @boxes_string
 
     update: () ->
         # Send the update signal to all subscribers.
@@ -53,5 +72,7 @@ class Game.States.Run
 
     check_box_collision: (object_1, object_2) =>
         if @game.t_wrecks.attacking and object_2.sprite?
+            @score += 1
+            @update_score_string()
             object_2.sprite.destroy()
             object_2 = null
