@@ -11,7 +11,7 @@ transparent = true
 antialias = true
 physics_config = null
 
-# Initialise the gamme
+# Initialise the game
 Game.game = new Phaser.Game(width, height, renderer, parent, transparent, antialias, physics_config)
 
 

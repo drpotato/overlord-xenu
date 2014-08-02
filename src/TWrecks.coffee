@@ -4,6 +4,8 @@ class Game.Classes.TWrecks extends Game.Classes.Entity
     constructor: (@game, x, y, update) ->
 
         super(@game, x, y, 't_wrecks', update)
+
+        @name = 't_wrecks'
         
         # Set up the key bindings for the entity.
         @add_key_bindings({
@@ -23,26 +25,37 @@ class Game.Classes.TWrecks extends Game.Classes.Entity
                 'onDown': @attack
             }
         })
-        
-        @sprite.body.damping = 0.9
-        @sprite.body.angularDamping = 0.99
+        # Body constants:
+        @sprite.body.damping = 0.99
+        @sprite.body.angularDamping = 0.999
+        @attacking = false
+        @rotation_speed = 100
+        @forward_speed = 500
+        @backward_speed = 200
 
 
     move: (key) =>
         # When we handle a keypress, a key object representing the key pressed
         # is passed to this function.
+        
+        # Can't move if attacking.
+        if @attacking
+            return
 
         # Grab the name of the key.
         key_name = key.event.keyIdentifier.toLowerCase()
         switch key_name
-            when 'up' then @sprite.body.thrust(500)
-            when 'right' then @sprite.body.rotateRight(50)
-            when 'down' then @sprite.body.reverse(20)
-            when 'left' then @sprite.body.rotateLeft(50)
+            when 'up' then @sprite.body.moveForward(@forward_speed)
+            when 'right' then @sprite.body.rotateRight(@rotation_speed)
+            when 'down' then @sprite.body.moveBackward(@backward_speed)
+            when 'left' then @sprite.body.rotateLeft(@rotation_speed)
 
     attack: (key) =>
-        tween = @game.add.tween(@sprite.body).to({angle: 360}, 500, Phaser.Easing.Linear.None)
+        new_angle = @sprite.body.angle + 360
+        tween = @game.add.tween(@sprite.body).to({angle: new_angle}, 500, Phaser.Easing.Linear.None)
+        tween.onStart.add(() => @attacking = true)
+        tween.onComplete.add(() => @attacking = false)
         tween.start()
-        
-        
+
     update: () =>
+        
