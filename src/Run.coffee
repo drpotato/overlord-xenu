@@ -24,6 +24,9 @@ class Game.States.Run
         # @sound_manager.music = @soundmanager.add('music', 1, true)
 
     create: () ->
+        
+        @game.stage.backgroundColor = '#0000000'
+        
         # Start the game's physics.
         @game.physics.startSystem(Phaser.Physics.P2JS)
         @game.physics.p2.defaultRestitution = 0.2
@@ -68,11 +71,16 @@ class Game.States.Run
 
     update: () ->
         # Send the update signal to all subscribers.
+        if @game.no_boxes == @game.max_boxes
+            @game.paused = true 
+        
         @onUpdate.dispatch()
 
     check_box_collision: (object_1, object_2) =>
         if @game.t_wrecks.attacking and object_2.sprite?
             @score += 1
+            @game.no_boxes -= 1
             @update_score_string()
+            @update_boxes_string()
             object_2.sprite.destroy()
             object_2 = null
